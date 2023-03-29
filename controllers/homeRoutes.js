@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Project, User } = require('../models');
+const { Project, User, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
@@ -53,15 +53,23 @@ router.get('/project/:id', async (req, res) => {
 router.get('/profile', withAuth, async (req, res) => {
   try {
     // Find the logged in user based on the session ID
-    const userData = await User.findByPk(req.session.user_id, {
-      attributes: { exclude: ['password'] },
-      include: [{ model: Project }],
-    });
+    // const userData = await User.findByPk(req.session.user_id, {
+    //   attributes: { exclude: ['password'] },
+    //   include: [{ model: Project }],
+    //});
 
-    const user = userData.get({ plain: true });
+    //const user = userData.get({ plain: true });
+    const projectData = await Project.findAll({
+      where: {
+        user_id: req.session.user_id,
 
+      }
+    })
+    const projects = projectData.map((project)=>project.get({plain:true}));
+    console.log(projects);
+    
     res.render('profile', {
-      ...user,
+      projects,
       logged_in: true
     });
   } catch (err) {
