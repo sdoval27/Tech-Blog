@@ -10,6 +10,7 @@
 - [Questions](#questions)
 
 ## Description:
+ ![Blog img]()
  A site where web developers can post about their projects.
 
 ## Installation:
@@ -29,3 +30,4 @@
 
 ## Questions:
  - Visit this project's repository [here](https://github.com/sdoval27/Tech-Blog)
+ - Visit deployed site [here](https://shielded-savannah-35345.herokuapp.com/)
