@@ -10,7 +10,7 @@
 - [Questions](#questions)
 
 ## Description:
- ![Blog img]()
+ ![Blog img](public/images/site-img.png)
  A site where web developers can post about their projects.
 
 ## Installation:
